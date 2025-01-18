@@ -24,9 +24,7 @@ budget_tool = QueryEngineTool.from_defaults(
     description="A RAG engine with some basic facts about the 2023 Canadian federal budget.",
 )
 
-agent = ReActAgent.from_tools(
-    [multiply_tool, add_tool, budget_tool], verbose=True
-)
+agent = ReActAgent(tools=[budget_tool, FunctionTool()])
 
 response = agent.chat(
     "What is the total amount of the 2023 Canadian federal budget multiplied by 3? Go step by step, using a tool to do any math."
