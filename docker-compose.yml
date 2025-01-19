@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  document_retriever:
+    build: .
+    environment:
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_ENVIRONMENT=${PINECONE_ENVIRONMENT}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    ports:
+      - "8000:8000" # Expose port if needed
+    volumes:
+      - .:/app
+    command: python main.py
